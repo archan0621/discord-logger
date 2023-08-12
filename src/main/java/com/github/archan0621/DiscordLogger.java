@@ -10,7 +10,7 @@ public class DiscordLogger {
 
     private DiscordLogger() {}
 
-    protected static DiscordLogger instance() {
+    public static DiscordLogger instance() {
         if (instance == null) {
             instance = new DiscordLogger();
         }
