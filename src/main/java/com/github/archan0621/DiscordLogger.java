@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class DiscordLogger {
 
-    private static String webhookUrl = "https://your_webhook_url";
+    public static String webhookUrl = "https://your_webhook_url";
 
     private static DiscordLogger instance;
 
