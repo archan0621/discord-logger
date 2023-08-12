@@ -1,3 +1,5 @@
+package com.github.archan0621;
+
 import java.io.IOException;
 
 public class DiscordLogger {

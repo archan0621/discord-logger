@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group = 'kr.co.archan'
+group = 'com.github.archan0621'
 version = '1.0'
 
 publishing {
