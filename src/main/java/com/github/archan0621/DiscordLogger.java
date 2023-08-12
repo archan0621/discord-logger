@@ -17,7 +17,7 @@ public class DiscordLogger {
         return instance;
     }
 
-    private void send(String message) {
+    public void send(String message) {
         try {
             LogProvider.instance().build(message);
         } catch (IOException e) {
@@ -25,7 +25,7 @@ public class DiscordLogger {
         }
     }
 
-    private void send(String title, String message) {
+    public void send(String title, String message) {
         try {
             LogProvider.instance().build(title, message);
         } catch (IOException e) {
@@ -33,7 +33,7 @@ public class DiscordLogger {
         }
     }
 
-    private void send(String message, Scope scope) {
+    public void send(String message, Scope scope) {
         try {
             LogProvider.instance().build(message, scope);
         } catch (IOException e) {
@@ -41,7 +41,7 @@ public class DiscordLogger {
         }
     }
 
-    private void send(String title, String message, Scope scope) {
+    public void send(String title, String message, Scope scope) {
         try {
             LogProvider.instance().build(title, message, scope);
         } catch (IOException e) {
