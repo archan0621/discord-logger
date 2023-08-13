@@ -61,7 +61,7 @@ public class LogProvider {
         String param = "{\n" +
                 "  \"embeds\": [{\n" +
                 "    \"title\": \""+ title +"\",\n" +
-                "    \"description\": \""+ URLEncoder.encode(message, "UTF-8") + "\"\n" +
+                "    \"description\": \""+ message + "\"\n" +
                 "  }]\n" +
                 "}";
 
@@ -69,11 +69,15 @@ public class LogProvider {
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setRequestProperty("Content-Length", Integer.toString(param.length()));
 
-        conn.setDoOutput(true); // POST 요청을 보낼 것임을 설정
+        conn.setDoOutput(true); // Enable POST request
 
-        try (DataOutputStream dos = new DataOutputStream(conn.getOutputStream())) {
-            dos.writeBytes(param);
-            conn.getInputStream();
+        try (OutputStream os = conn.getOutputStream()) {
+            byte[] input = param.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+
+        try (InputStream responseStream = conn.getInputStream()) {
+            // You can read and process the response here if needed
         }
     }
 
@@ -82,21 +86,24 @@ public class LogProvider {
 
         String param = "{\n" +
                 "  \"embeds\": [{\n" +
-                "    \"title\": \"@ "+ scope.toString() + " " + title +"\",\n" +
-                "    \"description\": \""+ URLEncoder.encode(message, "UTF-8") + "\"\n" +
+                "    \"title\": \"" + title +"\",\n" +
+                "    \"description\": \"@" + scope.toString() + " " + message + "\"\n" +
                 "  }]\n" +
                 "}";
 
         URLConnection conn = url.openConnection();
         conn.setRequestProperty("Content-Type", "application/json");
         conn.setRequestProperty("Content-Length", Integer.toString(param.length()));
-        conn.setRequestProperty("Accept-Charset", "UTF-8");
 
-        conn.setDoOutput(true); // POST 요청을 보낼 것임을 설정
+        conn.setDoOutput(true); // Enable POST request
 
-        try (DataOutputStream dos = new DataOutputStream(conn.getOutputStream())) {
-            dos.writeBytes(param);
-            conn.getInputStream();
+        try (OutputStream os = conn.getOutputStream()) {
+            byte[] input = param.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        }
+
+        try (InputStream responseStream = conn.getInputStream()) {
+            // You can read and process the response here if needed
         }
     }
 
